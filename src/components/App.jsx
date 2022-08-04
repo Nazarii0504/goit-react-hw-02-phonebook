@@ -39,6 +39,7 @@ export class App extends Component {
       contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
+
   contactList = () => {
     const { contacts, filter } = this.state;
     const lowercaseFilter = filter.toLowerCase();
@@ -50,18 +51,13 @@ export class App extends Component {
   render() {
     return (
       <>
-
-          <Section title="Phonebook">
-            <ContactForm onSubmit={this.addContact} />
-          </Section>
-          <Section title="Contacts">
-            <Filter onChange={this.handleInput} />
-            <ContactList
-              contacts={this.contactList()}
-              deleteId={this.deleteId}
-            />
-          </Section>
-
+        <Section title="Phonebook">
+          <ContactForm onSubmit={this.addContact} />
+        </Section>
+        <Section title="Contacts">
+          <Filter onChange={this.handleInput} />
+          <ContactList contacts={this.contactList()} deleteId={this.deleteId} />
+        </Section>
       </>
     );
   }
